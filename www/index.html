@@ -21,7 +21,6 @@
                 $.getJSON("https://dl.dropboxusercontent.com/u/1403240/staj/metadata.json", function(data) {
                     deviceName = data.deviceName;
                     var raspiCamCount = data.raspiCamCount;
-
                     //$("#imageTitle").innerHTML = "";
 
                     for (var i = 0; i < raspiCamCount; i++) {
@@ -31,7 +30,6 @@
                         //document.getElementById("imageTitle").innerHTML = deviceName;
                         //$("#images").append("<li class=\"item\" ><img src=' " + URLs[i] + " ' width='100%' heigth='100%'></li> ");
                     }
-
                     //angular.element(document.getElementById('main')).scope().initialize(grids);
                 });
             }
