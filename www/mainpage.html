@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>Ionic App</title>
+		<link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<script src="lib/ionic/js/ionic.bundle.js"></script>
+		<script src="js/app.js"></script>
+		<script src="cordova.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="js/jquery.jsonp-2.3.0.min.js "></script>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<style>
+			.imgCenter {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 5px;
+			}
+		</style>
+		
+	</head>
+
+	<body id="main" ng-app="starter" ng-controller="MainCtrl" bgcolor="#0a1c2b">
+		
+		<div>
+			<img class="imgCenter" src="img/grundig-logo.png" width="80%" margin-bottom="30px"/>
+		</div>
+		
+		
+			<div class="button-bar">
+				<a class="button button-outline button-positive">REFRESH</a>
+				<a class="button button-outline button-positive	">TAKE PICTURE</a>
+			</div>
+		
+		
+			<div>
+				<img class="imgCenter" src="img/fridge.jpeg" width="50%"/>
+			</div>
+		
+	</body>
+
+</html>
+nav-transition="android" href="#/movie/1"
+
+<body>
+  
+  <!-- The nav bar that will be updated as we navigate -->
+  
+  
+  <ion-nav-view></ion-nav-view>
+  
+  <script id="index.html" type="text/ng-template">
+    <ion-view view-title="First page">  
+      <ion-content class="padding"  >
+        <h1 style="text-align: center;">Page navigation examples</h1><br/>
+        <a nav-transition="none" href="#/movie/1">
+          <button class="button button-positive">
+            Change page using href attribute
+          </button>
+        </a><br/><br/>
+        <a nav-transition="android" href="#/movie/1">
+          <button class="button button-positive">
+            Animate change page using href attribute
+          </button>
+        </a><br/><br/>        
+        <button class="button button-positive" ng-click="changePage()">
+          Programmatically change page
+        </button>        
+      </ion-content>
+    </ion-view>
+  </script>  
+  
+  <script id="view.html" type="text/ng-template">
+    <ion-view view-title="Second page" has-header="false">
+      <ion-content class="padding">
+            <button class="button icon ion-ios-arrow-back" ng-click="goBack()" nav-direction="back">Go Back</button>
+      </ion-content>
+    </ion-view>
+  </script>   
+  
+</body>

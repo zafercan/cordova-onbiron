@@ -1,0 +1,38 @@
+{
+  "cams": [
+    {
+      "url": "http://upload.wikimedia.org/wikipedia/commons/1/16/HDRI_Sample_Scene_Balls_%28JPEG-HDR%29.jpg",
+      "type": "raspi",
+      "id": 3,
+      "name": "raspicam1"
+    },
+    {
+      "url": "http://www.personal-view.com/talks/uploads/FileUpload/39/5efeafb5213ce3433d0b2fc7fe72cb.jpg",
+      "type": "raspi",
+      "id": 2,
+      "name": "raspicam2"
+    },
+    {
+      "url": "http://1.bp.blogspot.com/-pPAGNyln86Y/Uindkpv87kI/AAAAAAAAI4I/pbUilrlqoOg/s1600/Tulips2.jpg",
+      "type": "raspi",
+      "id": 1,
+      "name": "raspicam3"
+    },
+    {
+      "url": "http://www.steves-digicams.com/sdc-classic/qv2300/samples/07220016.jpg",
+      "type": "raspi",
+      "id": 1,
+      "name": "raspicam4"
+    },
+    {
+      "url": "http://www.personal-view.com/talks/uploads/FileUpload/39/5efeafb5213ce3433d0b2fc7fe72cb.jpg",
+      "type": "raspi",
+      "id": 0,
+      "name": "raspicam5"
+    }
+  ],
+  "deviceName": "Arcelik Touch Station 8860",
+  "usbCamCount": 0,
+  "raspiCamCount": 5,
+  "deviceId": 1
+}

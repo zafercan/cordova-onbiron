@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'ZapfDingbats';
+    src: url('fonts/ZapfDingbats.eot');
+    src: url('fonts/ZapfDingbats.eot') format('embedded-opentype'),
+         url('fonts/ZapfDingbats.woff2') format('woff2'),
+         url('fonts/ZapfDingbats.woff') format('woff'),
+         url('fonts/ZapfDingbats.ttf') format('truetype'),
+         url('fonts/ZapfDingbats.svg#ZapfDingbats') format('svg');
+}
+ 

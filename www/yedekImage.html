@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		<title>Ionic App</title>
+		<link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<script src="lib/ionic/js/ionic.bundle.js"></script>
+		<script src="js/yedek.js"></script>
+		<script src="cordova.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script src="js/jquery.jsonp-2.3.0.min.js "></script>
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+		<script type="text/javascript">
+			var URLs = [];
+			var raspiCamCount;
+			var grids;
+
+			grids = [{
+				id : 0,
+				srcImage : 'http://placehold.it/150x150',
+				srcRaf : 'img/raf4_1.png',
+			}, {
+				id : 1,
+				srcImage : 'http://placehold.it/150x150',
+				srcRaf : 'img/raf4_2.png',
+			}, {
+				id : 2,
+				srcImage : 'http://placehold.it/150x150',
+				srcRaf : 'img/raf4_3.png',
+			}, {
+				id : 3,
+				srcImage : 'http://placehold.it/150x150',
+				srcRaf : 'img/raf4_4.png',
+			}];
+			$(document).ready(function() {
+
+				$.getJSON("https://dl.dropboxusercontent.com/u/1403240/staj/metadata.json", function(data) {
+					var deviceName = data.deviceName;
+					raspiCamCount = data.raspiCamCount;
+
+					//$("#title").append(deviceName);
+
+					for (var i = 0; i < raspiCamCount; i++) {
+						URLs[i] = data.cams[i].url;
+						grids[i].srcImage = URLs[i];
+						//$("#images").append("<li class=\"item\" ><img src=' " + URLs[i] + " ' width='100%' heigth='100%'></li> ");
+					}
+					//angular.element(document.getElementById('main')).scope().initialize(grids);
+				});
+			});
+
+		</script>
+	</head>
+
+	<body id="main" ng-app="starter" ng-controller="MainCtrl">
+		<ion-content>
+			<div class="row" ng-repeat="grid in grids" ng-if="$index % 2 === 0">
+				<div class="col col-50" ng-if="$index < grids.length">
+					<img class="imgGrid" ng-click="openModal(grids[$index])" ng-src="{{grids[$index].srcImage}}">
+					<img class="imgRaf" ng-src="{{grids[$index].srcRaf}}">
+				</div>
+				<div class="col col-50" ng-if="$index + 1 < grids.length">
+					<img class="imgGrid" ng-click="openModal(grids[$index+1])" ng-src="{{grids[$index+1].srcImage}}">
+					<img class="imgRaf" ng-src="{{grids[$index+1].srcRaf}}">
+				</div>
+
+			</div>
+		</ion-content>
+	</body>
+
+</html>
