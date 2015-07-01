@@ -5,9 +5,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 		<title>Ionic App</title>
-		<link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
-		<link href="css/style.css" rel="stylesheet">
-		<link rel="stylesheet" href="css/ZapfDingbats.css">
+		<link href="css/ionic.app.min.css" rel="stylesheet"> //sass
+		<link rel="stylesheet" href="css/ZapfDingbats.css"> //font
 		<script src="lib/ionic/js/ionic.bundle.js"></script>
 		<script src="js/ng-cordova.js"></script>
 		<script src="cordova.js"></script>
@@ -21,17 +20,18 @@
                 $.getJSON("https://dl.dropboxusercontent.com/u/1403240/staj/metadata.json", function(data) {
                     deviceName = data.deviceName;
                     var raspiCamCount = data.raspiCamCount;
-                    //$("#imageTitle").innerHTML = "";
 
                     for (var i = 0; i < raspiCamCount; i++) {
                         URLs[i] = data.cams[i].url;
                         grids[i].srcImage = URLs[i];
                         grids[0].title = deviceName;
-                        //document.getElementById("imageTitle").innerHTML = deviceName;
-                        //$("#images").append("<li class=\"item\" ><img src=' " + URLs[i] + " ' width='100%' heigth='100%'></li> ");
                     }
-                    //angular.element(document.getElementById('main')).scope().initialize(grids);
+
                 });
+            }
+
+            function getTimeStamp() {
+				return Date.now;
             }
 
             var URLs = [];
@@ -65,18 +65,33 @@
                 //  grids[0].srcImage = 'http://placehold.it/150x150';
 
                 document.getElementById(id).innerHTML = "";
-
-                setTimeout(function() {
-                    document.getElementById(id).innerHTML = "<div  class=\"row\" ng-repeat=\"grid in grids\" ng-if=\"$index % 2 === 0\"><div class=\"col col-50\" ng-if=\"$index < grids.length\"><img class=\"imgGrid\" ng-click=\"openModal(grids[$index])\" ng-src=\"{{grids[$index].srcImage}}\">	<img class=\"imgRaf\" ng-src=\"{{grids[$index].srcRaf}}\"></div><div class=\"col col-50\" ng-if=\"$index + 1 < grids.length\"><img class=\"imgGrid\" ng-click=\"openModal(grids[$index+1])\" ng-src=\"{{grids[$index+1].srcImage}}\">		<img class=\"imgRaf\" ng-src=\"{{grids[$index+1].srcRaf}}\"></div></div>";
-
-                    JSONProcess();
-
-                }, 5000);
+                alert("done");
 
             }
 
 		</script>
 		<style>
+			.imgGrid {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+
+			.imgRaf {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 5px;
+				height: 30px;
+				width: 30px;
+			}
+
+			.imgCenter {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				margin-top: 5px;
+			}
 			.fixImage {
 				bottom: 0px;
 				display: block;
@@ -93,12 +108,16 @@
 			.bar.bar-positive .title, .button {
 				font-family: "ZapfDingbats";
 			}
+			.background, .background .pane, .background .item, .background .item-complex .item-content {
+			 background-color: #14232D;
+			 }
+			 
 		</style>
 	</head>
 
-	<body ng-app="starter"  >
+	<body ng-app="starter"  class="background">
 
-		<ion-nav-bar class="bar-positive">
+		<ion-nav-bar class="bar-light">
 
 			<ion-nav-back-button class="button-clear">
 				<i class="ion-arrow-left-c"> </i> Back
@@ -109,8 +128,40 @@
 
 		</ion-nav-view>
 
+		<!-- <ion-pane>
+		<ion-header-bar class="bar-positive">
+		<h1 class="title">myNetwork</h1>
+		</ion-header-bar>
+		<ion-header-bar class="bar-subheader bar-positive">
+		<h1 class="title">Subheader</h1>
+		</ion-header-bar>
+		<ion-content class="padding">
+		<ion-list>
+		<button class="button button-positive">button</button>
+		<button class="button button-block button-outline button-positive">
+		Outlined Button
+		</button>
+		<button class="button button-block button-positive">Block Button</button>
+		<button class="button button-block button-clear  button-positive">Clear Button</button>
+		<ion-item href="#" class="item-positive">Item</ion-item>
+		<ion-toggle toggle-class="toggle-positive">Toggle</ion-toggle>
+		<div class="item range range-positive">
+		<i class="icon ion-ios7-sunny-outline"></i>
+		<input type="range" name="volume" min="0" max="100" value="33">
+		<i class="icon ion-ios7-sunny"></i>
+		</div>
+		<a class="item" href="#">
+		Badges
+		<span class="badge badge-positive">0</span>
+		</a>
+		</ion-list>
+		</ion-content>
+		<ion-footer-bar class="bar-positive">
+		<h1 class="title">Footer</h1>
+		</ion-footer-bar>
+		</ion-pane> -->
 		<script id="index.html" type="text/ng-template">
-			<ion-view title="Grundig">
+			<ion-view title="Grundig" cache-view="false">
 
 			<ion-content class="padding">
 
@@ -119,10 +170,9 @@
 			</div>
 
 			<div class="button-bar">
-			<a class="button button-outline button-positive icon-left ion-refresh"  nav-transition="android" href="#/images">REFRESH</a>
-			<!-- <a style="margin:auto;float:left;" nav-transition="android" href="#/images"><button class="Mainbuttons"  >REFRESH </button></a>
-			<!-- <a style="margin:auto;float: right" nav-transition="android" href="#/images"><button class="Mainbuttons"  >TAKE PICTURE </button></a-->
-			<a class="button button-outline button-positive icon-left ion-camera" nav-transition="android" href="#/images">TAKE PICTURE</a>
+			<button class="button button-outline button-light icon-left ion-refresh" ng-click="changePage()">REFRESH</button>
+			<!-- <a class="button button-outline button-positive icon-left ion-refresh"  nav-transition="android" href="#/images">REFRESH</a> -->
+			<a class="button button-outline button-light icon-left ion-camera" nav-transition="android" href="#/images">TAKE PICTURE</a>
 			</div>
 
 			<div>
@@ -135,7 +185,7 @@
 		</script>
 
 		<script id="yedekImage.html" type="text/ng-template">
-			<ion-view title="{{grids[0].title}}" id="imageTitle" >
+			<ion-view title="{{grids[0].title}}" id="imageTitle" cache-view="false" >
 			<ion-content class="padding"  >
 			<ion-refresher
 			pulling-text="Pull to refresh..."
@@ -145,7 +195,7 @@
 			<div  class="row" ng-repeat="grid in grids" ng-if="$index % 2 === 0">
 
 			<div class="col col-50" ng-if="$index < grids.length">
-			<img class="imgGrid" ng-click="openModal(grids[$index])" ng-src="{{grids[$index].srcImage}}">
+			<img class="imgGrid" ng-click="openModal(grids[$index])" ng-src="{{grids[$index].srcImage}}&{{getTimeStamp()}}">
 			<img class="imgRaf" ng-src="{{grids[$index].srcRaf}}">
 			</div>
 
@@ -157,40 +207,16 @@
 			</div>
 			</div>
 			</ion-content>
-			<ion-footer-bar class="bar-light" >
+			<ion-footer-bar class="bar-positive" >
 			<div class="button-bar" ng-controller="ShareController">
-			<a  onclick="clearContent()" class="button button-outline button-positive icon-left ion-refresh"  href="#images" nav-transition="android"  >REFRESH</a>
+			<a  onclick="clearContent('allImages')" class="button button-outline button-light icon-left ion-refresh"  href="#images" nav-transition="android"  >REFRESH</a>
 
-			<a ng-click="shareAnywhere()" class="button button-outline button-positive icon-left ion-android-share" nav-transition="android" href="#images">SHARE</a>
+			<a ng-click="shareAnywhere()" class="button button-outline button-light icon-left ion-android-share" nav-transition="android" href="#images">SHARE</a>
 			</div>
 			</ion-footer-bar>
 			</ion-view>
 
 		</script>
-
-		<!-- <script id="share.html" type="text/ng-template">
-		<ion-view title="Share"  >
-		<ion-content class="padding"  ng-controller="ShareController">
-
-		<div class="button-bar">
-		<a class="button button-outline button-positive icon-left ion-refresh"  href="#images" nav-transition="android"  >REFRESH</a>
-		<a ng-click="shareViaWhatsApp('Demo message', 'img/ionic.png', 'http://santoshshinde2012.blogspot.com')" class="button button-outline button-positive icon-left ion-android-share" nav-transition="android" href="#share">SHARE</a>
-		</div>
-
-		<br><br>
-		<button class="button" ng-click="shareAnywhere()">Share anywhere</button>
-		<!-- Place Your Image file www/img directory -->
-		<!-- <button class="button" ng-click="shareViaTwitter('Demo message', 'img/ionic.png', 'http://santoshshinde2012.blogspot.com')">Share on Twitter</button>
-		<br><br>
-		<button class="button" ng-click="shareViaWhatsApp('Demo message', 'img/ionic.png', 'http://santoshshinde2012.blogspot.com')">Share on WhatsApp</button>
-		<button class="button" ng-click="shareViaFacebook('Demo message', 'img/ionic.png', 'http://santoshshinde2012.blogspot.com')">Share on Facebook</button>
-
-		</ion-content>
-
-		</ion-view>
-
-		</script -->
-
 	</body>
 
 </html>

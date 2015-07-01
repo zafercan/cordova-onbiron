@@ -18,6 +18,14 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+$positive:                        #14232D !default;
+$light:                           #14232D !default; 
+
+$button-light-text:               #46B9EB !default;
+$button-light-border:             #46B9EB !default;
+
+//#14232D
+//#46B9EB
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 

@@ -1,26 +1,5 @@
 /* Empty. Add your own CSS if you like */
 
-.imgGrid {
-	display: block;
-	width: 100%;
-	height: auto;
-}
-
-.imgRaf {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 5px;
-	height: 30px;
-	width: 30px;
-}
-
-.imgCenter {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 5px;
-}
 .animate {
 	-webkit-transition: all .15s linear;
 	transition: all .15s linear;

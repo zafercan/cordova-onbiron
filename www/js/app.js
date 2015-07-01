@@ -1,4 +1,5 @@
 var nameApp = angular.module('starter', ['ionic', 'ui.router', 'ngCordova']);
+
 nameApp.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -14,26 +15,31 @@ nameApp.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('index', {
         url : '/',
         templateUrl : 'index.html',
-        controller : 'ListCtrl'
+        controller : 'ListCtrl',
+        cache : false
     }).state('view', {
         url : '/images',
         templateUrl : 'yedekImage.html',
-        controller : 'MainCtrl'
+        controller : 'MainCtrl',
+        cache : false
     }).state('share', {
         url : '/share',
         templateUrl : 'share.html',
-        controller : 'ShareController'
+        controller : 'ShareController',
+        cache : false
     });
 
     $urlRouterProvider.otherwise("/");
 
 });
 
-nameApp.controller('ListCtrl', function($scope, $state, $http) {
+nameApp.controller('ListCtrl', function($scope, $state) {
+     
+     //$ionicHistory.clearCache().then(function(){ $state.go('view', { imageid : 1 } )});
     $scope.changePage = function() {
         $state.go('view', {
             imageid : 1
-        });
+        },{reload:true});
     };
 
 });
@@ -45,7 +51,7 @@ nameApp.controller('ViewCtrl', function($scope, $stateParams, $ionicHistory) {
     };
 });
 
-nameApp.controller('MainCtrl', function($scope, $ionicModal, $http) {
+nameApp.controller('MainCtrl', function($scope, $ionicModal, $http,$state) {
 
     $scope.hide = [{
         bars : true
@@ -54,37 +60,12 @@ nameApp.controller('MainCtrl', function($scope, $ionicModal, $http) {
     $scope.data = {};
     $scope.grids = grids;
 
-    // $scope.grids = [{
-    // id: 0,
-    // src:  deneme,
-    // }, {
-    // id: 1,
-    // src:  'http://lorempixel.com/400/200/sports/2/',
-    // }, {
-    // id: 2,
-    // src: 'http://lorempixel.com/400/200/sports/3/',
-    // }, {
-    // id: 3,
-    // src: 'http://lorempixel.com/400/200/sports/4/',
-    // }, {
-    // id: 4,
-    // src: 'http://lorempixel.com/400/200/sports/5/',
-    // }, {
-    // id: 5,
-    // src: 'http://lorempixel.com/400/200/sports/6/',
-    // }];
-
     $ionicModal.fromTemplateUrl('templates/modal.html', function(modal) {
         $scope.gridModal = modal;
     }, {
         scope : $scope,
         animation : 'slide-in-up'
     });
-
-    // $scope.initialize = function(grids) {
-    // console.log();
-    // $scope.grids = grids;
-    // };
 
     $scope.openModal = function(selected) {
         console.log(selected.id);
@@ -108,10 +89,10 @@ nameApp.controller('MainCtrl', function($scope, $ionicModal, $http) {
             console.log("before : " + $scope.grids[i].srcImage);
             $scope.grids[i].srcImage = img;
             console.log("after : " + $scope.grids[i].srcImage);
-            //document.getElementById("imageTitle").innerHTML = deviceName;
-            //$("#images").append("<li class=\"item\" ><img src=' " + URLs[i] + " ' width='100%' heigth='100%'></li> ");
         }
-
+// $state.go('view', {
+            // imageid : 1
+        // },{reload: true});
         // Stop the ion-refresher from spinning
         $scope.$broadcast('scroll.refreshComplete');
         
