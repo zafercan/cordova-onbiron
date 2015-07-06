@@ -5,13 +5,16 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 		<title>Ionic App</title>
-		<link href="css/ionic.app.min.css" rel="stylesheet"> //sass
-		<link rel="stylesheet" href="css/ZapfDingbats.css"> //font
+		<link href="css/ionic.app.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link href="css/myStyle.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/ZapfDingbats.css">
 		<script src="lib/ionic/js/ionic.bundle.js"></script>
 		<script src="js/ng-cordova.js"></script>
 		<script src="cordova.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/share.js"></script>
+		<script src="js/fileTransfer.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script src="js/jquery.jsonp-2.3.0.min.js "></script>
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -23,15 +26,23 @@
 
                     for (var i = 0; i < raspiCamCount; i++) {
                         URLs[i] = data.cams[i].url;
+                        URLs[0] = "http://www.personal-view.com/talks/uploads/FileUpload/39/5efeafb5213ce3433d0b2fc7fe72cb.jpg";
+                        URLs[1] = "http://www.personal-view.com/talks/uploads/FileUpload/39/5efeafb5213ce3433d0b2fc7fe72cb.jpg";
+                        URLs[2] = "http://1.bp.blogspot.com/-pPAGNyln86Y/Uindkpv87kI/AAAAAAAAI4I/pbUilrlqoOg/s1600/Tulips2.jpg";
+                        URLs[3] = "http://www.steves-digicams.com/sdc-classic/qv2300/samples/07220016.jpg";
                         grids[i].srcImage = URLs[i];
                         grids[0].title = deviceName;
+                        var fileName = "image";
+                        var index = i.toString();
+                        fileName = fileName + index;
+                        download(URLs[i], "GrundigImages", fileName);
                     }
 
                 });
             }
 
             function getTimeStamp() {
-				return Date.now;
+                return Date.now;
             }
 
             var URLs = [];
@@ -70,49 +81,7 @@
             }
 
 		</script>
-		<style>
-			.imgGrid {
-				display: block;
-				width: 100%;
-				height: auto;
-			}
-
-			.imgRaf {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				margin-top: 5px;
-				height: 30px;
-				width: 30px;
-			}
-
-			.imgCenter {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				margin-top: 5px;
-			}
-			.fixImage {
-				bottom: 0px;
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				margin-top: 15%;
-			}
-			.fixLogo {
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				margin-bottom: 15%;
-			}
-			.bar.bar-positive .title, .button {
-				font-family: "ZapfDingbats";
-			}
-			.background, .background .pane, .background .item, .background .item-complex .item-content {
-			 background-color: #14232D;
-			 }
-			 
-		</style>
+		 
 	</head>
 
 	<body ng-app="starter"  class="background">
@@ -128,40 +97,8 @@
 
 		</ion-nav-view>
 
-		<!-- <ion-pane>
-		<ion-header-bar class="bar-positive">
-		<h1 class="title">myNetwork</h1>
-		</ion-header-bar>
-		<ion-header-bar class="bar-subheader bar-positive">
-		<h1 class="title">Subheader</h1>
-		</ion-header-bar>
-		<ion-content class="padding">
-		<ion-list>
-		<button class="button button-positive">button</button>
-		<button class="button button-block button-outline button-positive">
-		Outlined Button
-		</button>
-		<button class="button button-block button-positive">Block Button</button>
-		<button class="button button-block button-clear  button-positive">Clear Button</button>
-		<ion-item href="#" class="item-positive">Item</ion-item>
-		<ion-toggle toggle-class="toggle-positive">Toggle</ion-toggle>
-		<div class="item range range-positive">
-		<i class="icon ion-ios7-sunny-outline"></i>
-		<input type="range" name="volume" min="0" max="100" value="33">
-		<i class="icon ion-ios7-sunny"></i>
-		</div>
-		<a class="item" href="#">
-		Badges
-		<span class="badge badge-positive">0</span>
-		</a>
-		</ion-list>
-		</ion-content>
-		<ion-footer-bar class="bar-positive">
-		<h1 class="title">Footer</h1>
-		</ion-footer-bar>
-		</ion-pane> -->
 		<script id="index.html" type="text/ng-template">
-			<ion-view title="Grundig" cache-view="false">
+			<ion-view title="" cache-view="false">
 
 			<ion-content class="padding">
 
@@ -176,7 +113,7 @@
 			</div>
 
 			<div>
-			<img class="fixImage" src="img/fridge.jpeg" width="100%" />
+			<img class="fixImage" src="img/fridge.png" width="100%" />
 			</div>
 
 			</ion-content>
@@ -184,36 +121,31 @@
 			</ion-view>
 		</script>
 
-		<script id="yedekImage.html" type="text/ng-template">
-			<ion-view title="{{grids[0].title}}" id="imageTitle" cache-view="false" >
-			<ion-content class="padding"  >
+		<script id="images.html" type="text/ng-template">
+			<ion-view title="{{grids[0].title}}" id="imageTitle"  cache-view="false" >
+			<ion-content  class="imgCenter">  <!--class="padding"-->
 			<ion-refresher
 			pulling-text="Pull to refresh..."
 			on-refresh="doRefresh()">
 			</ion-refresher>
 			<div id="allImages">
-			<div  class="row" ng-repeat="grid in grids" ng-if="$index % 2 === 0">
+			<div  class="row" ng-repeat="grid in grids" ng-if="$index % 2 === 0" ng-controller="ShareController">
 
 			<div class="col col-50" ng-if="$index < grids.length">
-			<img class="imgGrid" ng-click="openModal(grids[$index])" ng-src="{{grids[$index].srcImage}}&{{getTimeStamp()}}">
+			<img class="imgGrid" ng-click="openModal(grids[$index])" ng-src="{{grids[$index].srcImage}}">
 			<img class="imgRaf" ng-src="{{grids[$index].srcRaf}}">
 			</div>
 
 			<div class="col col-50" ng-if="$index + 1 < grids.length">
 			<img class="imgGrid" ng-click="openModal(grids[$index+1])" ng-src="{{grids[$index+1].srcImage}}">
 			<img class="imgRaf" ng-src="{{grids[$index+1].srcRaf}}">
+
 			</div>
 
 			</div>
 			</div>
 			</ion-content>
-			<ion-footer-bar class="bar-positive" >
-			<div class="button-bar" ng-controller="ShareController">
-			<a  onclick="clearContent('allImages')" class="button button-outline button-light icon-left ion-refresh"  href="#images" nav-transition="android"  >REFRESH</a>
 
-			<a ng-click="shareAnywhere()" class="button button-outline button-light icon-left ion-android-share" nav-transition="android" href="#images">SHARE</a>
-			</div>
-			</ion-footer-bar>
 			</ion-view>
 
 		</script>

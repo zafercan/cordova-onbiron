@@ -19,7 +19,7 @@ nameApp.config(function($stateProvider, $urlRouterProvider) {
         cache : false
     }).state('view', {
         url : '/images',
-        templateUrl : 'yedekImage.html',
+        templateUrl : 'images.html',
         controller : 'MainCtrl',
         cache : false
     }).state('share', {

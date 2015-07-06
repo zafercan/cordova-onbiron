@@ -1,0 +1,36 @@
+<ion-modal-view ng-class="hide.bars ? 'content-dark' : 'content-light'">
+
+	<ion-header-bar class="bar-light animate" ng-hide="hide.bars">
+		<button class="button button-clear button-primary" ng-click="closeModal()">
+			<span class="icon ion-ios7-close-outline"></span >
+		</button>
+	</ion-header-bar>
+
+	<ion-slide-box active-slide="data.selected" show-pager="false">
+		<ion-slide ng-repeat="grid in grids" >
+
+			<ion-scroll direction="xy" locking="false" zooming="true" min-zoom="1" on-tap="hide.bars = !hide.bars"
+			class="animate modal-content"
+			ng-class="hide.bars ? 'content-dark full' : 'content-light has-header has-footer'">
+
+				<div class="list card">
+
+					<div class="item item-image">
+						<img class="modal-img" ng-src="{{grid.srcImage}}"/>
+					</div>
+
+					<!-- <div class="item item-icon-left assertive" href="#">
+
+					</div> -->
+				</div>
+
+				<br/>
+
+				<!-- < ng-src="{{data.selected.src}}"  > -->
+			</ion-scroll>
+			<ion-footer-bar  class="bar-light animate" ng-hide="hide.bars" ><img class="imgRaf" ng-src="{{grid.srcRaf}}"/>
+			</ion-footer-bar>
+		</ion-slide>
+	</ion-slide-box>
+
+</ion-modal-view>

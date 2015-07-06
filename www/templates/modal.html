@@ -1,3 +1,4 @@
+ 
 <ion-modal-view ng-class="hide.bars ? 'content-dark' : 'content-light'">
 
 	<ion-header-bar class="bar-light animate" ng-hide="hide.bars">
@@ -6,16 +7,16 @@
 		</button>
 	</ion-header-bar>
 
-	<ion-slide-box active-slide="data.selected" show-pager="false">
+	<ion-slide-box  active-slide="data.selected" show-pager="false">
 		<ion-slide ng-repeat="grid in grids" >
 
-			<ion-scroll direction="xy" locking="false" zooming="true" min-zoom="1" on-tap="hide.bars = !hide.bars"
-			class="animate modal-content"
-			ng-class="hide.bars ? 'content-dark full' : 'content-light has-header has-footer'">
+			<ion-scroll direction="xy" locking="false" zooming="true" min-zoom="1"  on-tap="hide.bars = !hide.bars"
+			class="animate modal-content background"
+			ng-class="hide.bars ? 'content-dark full' : 'content-light has-header has-footer'" ">
 
-				<div class="list card">
+				<div class="list card background">
 
-					<div class="item item-image">
+					<div class="item item-image imgCenter" >
 						<img class="modal-img" ng-src="{{grid.srcImage}}"/>
 					</div>
 
@@ -28,9 +29,16 @@
 
 				<!-- < ng-src="{{data.selected.src}}"  > -->
 			</ion-scroll>
-			<ion-footer-bar  class="bar-light animate" ng-hide="hide.bars" ><img class="imgRaf" ng-src="{{grid.srcRaf}}"/>
+
+			<ion-footer-bar  class="bar-light animate" ng-hide="hide.bars" >
+				<!-- <img class="imgRaf" ng-src="{{grid.srcRaf}}"/> -->
+				<div class="button-bar" ng-controller="ShareController">
+					<a ng-click="shareViaWhatsApp('Demo message',{{grid.id}}, 'http://santoshshinde2012.blogspot.com')" class="button button-outline button-light icon-left ion-android-share" nav-transition="android" href="#images">SHARE</a>
+				</div>
+
 			</ion-footer-bar>
 		</ion-slide>
+
 	</ion-slide-box>
 
 </ion-modal-view>

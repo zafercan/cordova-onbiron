@@ -2,10 +2,10 @@ nameApp.controller("ShareController", function($scope, $cordovaSocialSharing) {
 
 	$scope.shareAnywhere = function() {
 
-		$cordovaSocialSharing.share("Sharing : ", "Subject", "img/ionic.png", "http://google.com");
+		$cordovaSocialSharing.share("Sharing : ", "Subject", "file:///storage/emulated/0//GrundigImages/image3.jpg", "http://google.com");
 	};
 	$scope.shareViaTwitter = function(message, image, link) {
-		alert("twitter");
+		
 		$cordovaSocialSharing.shareViaTwitter(message, image, link).then(function(result) {
 			// Success!
 			alert("success : " + result);
@@ -18,10 +18,14 @@ nameApp.controller("ShareController", function($scope, $cordovaSocialSharing) {
 	$scope.shareViaEmail = function() {
 		$cordovaSocialSharing.shareViaEmail('Sharing : ', 'Subject', 'zafer_can_05@hotmail.com');
 	};
-	$scope.shareViaWhatsApp = function(message, image, link) {
-		alert("whatsapp");
+	$scope.shareViaWhatsApp = function(message, id, link) {
+	   // alert("whatsapp");
+		var image = "file:///storage/emulated/0//GrundigImages/image"; 
+		 var index = id.toString();
+		 image += index;
+		 image += ".jpg";
 		$cordovaSocialSharing.shareViaWhatsApp(message, image, link).then(function(result) {
-			alert(result);
+			//alert(result);
 			// Success!
 		}, function(err) {
 			// An error occurred. Show a message to the user

@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'ZapfDingbats';
-    src: url('fonts/ZapfDingbats.eot');
-    src: url('fonts/ZapfDingbats.eot') format('embedded-opentype'),
-         url('fonts/ZapfDingbats.woff2') format('woff2'),
-         url('fonts/ZapfDingbats.woff') format('woff'),
-         url('fonts/ZapfDingbats.ttf') format('truetype'),
-         url('fonts/ZapfDingbats.svg#ZapfDingbats') format('svg');
+    src: url('/home/zafercan/Documents/projects/cordova-onbiron/www/lib/ionic/fonts/ZapfDingbats.eot');
+    src: url('/home/zafercan/Documents/projects/cordova-onbiron/www/lib/ionic/fonts/ZapfDingbats.eot') format('embedded-opentype'),
+         url('/home/zafercan/Documents/projects/cordova-onbiron/www/lib/ionic/fonts/ZapfDingbats.woff2') format('woff2'),
+         url('/home/zafercan/Documents/projects/cordova-onbiron/www/lib/ionic/fonts/ZapfDingbats.woff') format('woff'),
+         url('/home/zafercan/Documents/projects/cordova-onbiron/www/lib/ionic/fonts/ZapfDingbats.ttf') format('truetype'),
+         url('/home/zafercan/Documents/projects/cordova-onbiron/www/lib/ionic/fonts/ZapfDingbats.svg#ZapfDingbats') format('svg');
 }
- 
+  
