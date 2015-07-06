@@ -22,11 +22,6 @@ nameApp.config(function($stateProvider, $urlRouterProvider) {
         templateUrl : 'images.html',
         controller : 'MainCtrl',
         cache : false
-    }).state('share', {
-        url : '/share',
-        templateUrl : 'share.html',
-        controller : 'ShareController',
-        cache : false
     });
 
     $urlRouterProvider.otherwise("/");

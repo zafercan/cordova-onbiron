@@ -15,8 +15,8 @@
 		<script src="js/app.js"></script>
 		<script src="js/share.js"></script>
 		<script src="js/fileTransfer.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-		<script src="js/jquery.jsonp-2.3.0.min.js "></script>
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+		<script src="js/jquery.jsonp-2.3.0.min.js "></script -->
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script type="text/javascript">
             function JSONProcess() {
@@ -81,7 +81,7 @@
             }
 
 		</script>
-		 
+
 	</head>
 
 	<body ng-app="starter"  class="background">
@@ -132,8 +132,8 @@
 			<div  class="row" ng-repeat="grid in grids" ng-if="$index % 2 === 0" ng-controller="ShareController">
 
 			<div class="col col-50" ng-if="$index < grids.length">
-			<img class="imgGrid" ng-click="openModal(grids[$index])" ng-src="{{grids[$index].srcImage}}">
-			<img class="imgRaf" ng-src="{{grids[$index].srcRaf}}">
+				<img class="imgGrid" ng-click="openModal(grids[$index])" ng-src="{{grids[$index].srcImage}}">
+				<img class="imgRaf" ng-src="{{grids[$index].srcRaf}}">
 			</div>
 
 			<div class="col col-50" ng-if="$index + 1 < grids.length">
