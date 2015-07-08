@@ -1,4 +1,4 @@
-nameApp.controller("ShareController", function($scope, $cordovaSocialSharing) {
+myApp.controller("ShareController", function($scope, $cordovaSocialSharing) {
 
     $scope.shareAnywhere = function(id) {
         var image = "file:///storage/emulated/0//GrundigImages/image";

@@ -24,6 +24,27 @@ $light:                           #14232D !default;
 $button-light-text:               #46B9EB !default;
 $button-light-border:             #46B9EB !default;
 
+@font-face {
+    font-family: 'ZapfDingbats';
+    src: url('../lib/ionic/fonts/ZapfDingbats.eot');
+    src: url('../lib/ionic/fonts/ZapfDingbats.eot') format('embedded-opentype'),
+         url('../lib/ionic/fonts/ZapfDingbats.woff2') format('woff2'),
+         url('../lib/ionic/fonts/ZapfDingbats.woff') format('woff'),
+         url('../lib/ionic/fonts/ZapfDingbats.ttf') format('truetype'),
+         url('../lib/ionic/fonts/ZapfDingbats.svg#ZapfDingbats') format('svg');
+}
+
+html, body {
+  font-family: "ZapfDingbats" cursive !important;
+}
+
+.fonts{
+    font-family: 'ZapfDingbats';
+      color:white !important;
+      font-size:30px !important;
+      font-weight:200 !important;
+    }
+    
 //#14232D   lacivert
 //#46B9EB   turkuaz
 // Include all of Ionic

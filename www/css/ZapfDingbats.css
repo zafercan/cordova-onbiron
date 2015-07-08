@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
     font-family: 'ZapfDingbats';
     src: url('/www/lib/ionic/fonts/ZapfDingbats.eot');
     src: url('/www/lib/ionic/fonts/ZapfDingbats.eot') format('embedded-opentype'),
@@ -6,5 +6,14 @@
          url('/www/lib/ionic/fonts/ZapfDingbats.woff') format('woff'),
          url('/www/lib/ionic/fonts/ZapfDingbats.ttf') format('truetype'),
          url('/www/lib/ionic/fonts/ZapfDingbats.svg#ZapfDingbats') format('svg');
-}
+}*/
   
+ /*@font-face {
+    font-family: 'ZapfDingbats';
+    src: url('../lib/ionic/fonts/ZapfDingbats.eot');
+    src: url('../lib/ionic/fonts/ZapfDingbats.eot') format('embedded-opentype'),
+         url('../lib/ionic/fonts/ZapfDingbats.woff2') format('woff2'),
+         url('../lib/ionic/fonts/ZapfDingbats.woff') format('woff'),
+         url('../lib/ionic/fonts/ZapfDingbats.ttf') format('truetype'),
+         url('../lib/ionic/fonts/ZapfDingbats.svg#ZapfDingbats') format('svg');
+}*/

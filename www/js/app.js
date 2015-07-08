@@ -1,6 +1,6 @@
-var nameApp = angular.module('starter', ['ionic', 'ui.router', 'ngCordova']);
+var myApp = angular.module('starter', ['ionic', 'ui.router', 'ngCordova']);
 
-nameApp.run(function($ionicPlatform) {
+myApp.run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -10,7 +10,7 @@ nameApp.run(function($ionicPlatform) {
         }
     });
 });
-nameApp.config(function($stateProvider, $urlRouterProvider) {
+myApp.config(function($stateProvider, $urlRouterProvider) {
 
     $stateProvider.state('index', {
         url : '/',
@@ -28,7 +28,7 @@ nameApp.config(function($stateProvider, $urlRouterProvider) {
 
 });
 
-nameApp.controller('ListCtrl', function($scope, $state) {
+myApp.controller('ListCtrl', function($scope, $state) {
      
      //$ionicHistory.clearCache().then(function(){ $state.go('view', { imageid : 1 } )});
     $scope.changePage = function() {
@@ -39,14 +39,14 @@ nameApp.controller('ListCtrl', function($scope, $state) {
 
 });
 
-nameApp.controller('ViewCtrl', function($scope, $stateParams, $ionicHistory) {
+myApp.controller('ViewCtrl', function($scope, $stateParams, $ionicHistory) {
     console.log($stateParams.imageid);
     $scope.goBack = function() {
         $ionicHistory.goBack();
     };
 });
 
-nameApp.controller('MainCtrl', function($scope, $ionicModal, $http,$state) {
+myApp.controller('MainCtrl', function($scope, $ionicModal, $http,$state) {
 
     $scope.hide = [{
         bars : true
