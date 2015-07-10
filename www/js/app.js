@@ -11,7 +11,7 @@ myApp.run(function($ionicPlatform) {
     });
 });
 myApp.config(function($stateProvider, $urlRouterProvider) {
-
+//set page transition properties
     $stateProvider.state('index', {
         url : '/',
         templateUrl : 'index.html',
@@ -28,6 +28,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 
 });
 
+//first page controller
 myApp.controller('ListCtrl', function($scope, $state) {
      
      //$ionicHistory.clearCache().then(function(){ $state.go('view', { imageid : 1 } )});
@@ -38,15 +39,9 @@ myApp.controller('ListCtrl', function($scope, $state) {
     };
 
 });
-
-myApp.controller('ViewCtrl', function($scope, $stateParams, $ionicHistory) {
-    console.log($stateParams.imageid);
-    $scope.goBack = function() {
-        $ionicHistory.goBack();
-    };
-});
-
-myApp.controller('MainCtrl', function($scope, $ionicModal, $http,$state) {
+ 
+//second page and popup  coontroller
+myApp.controller('MainCtrl', function($scope, $ionicModal, $http,$state,$ionicScrollDelegate) {
 
     $scope.hide = [{
         bars : true
@@ -54,26 +49,26 @@ myApp.controller('MainCtrl', function($scope, $ionicModal, $http,$state) {
 
     $scope.data = {};
     $scope.grids = grids;
-
+//get template
     $ionicModal.fromTemplateUrl('templates/modal.html', function(modal) {
         $scope.gridModal = modal;
     }, {
         scope : $scope,
         animation : 'slide-in-up'
     });
-
+//open popup
     $scope.openModal = function(selected) {
         console.log(selected.id);
         $scope.data.selected = selected.id;
 
         $scope.gridModal.show();
     };
-
+//close popup
     $scope.closeModal = function() {
         $scope.gridModal.hide();
         $scope.hide.bars = false;
     };
-
+//ion-refresh function
     $scope.doRefresh = function() {
 
 
@@ -121,6 +116,6 @@ myApp.controller('MainCtrl', function($scope, $ionicModal, $http,$state) {
             // $scope.$broadcast('scroll.refreshComplete');
         // });
     };
-
+ $ionicScrollDelegate.resize();
 });
 

@@ -1,45 +1,63 @@
+.bar.bar-positive .title, .button, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'ZapfDingbats';
+	color: #fff;
+}
+.ionic-body, body {
+	font-family: 'ZapfDingbats';
+	color: #fff;
+}
+
+.fonts {
+	font-family: 'ZapfDingbats';
+	color: white !important;
+	font-size: 30px !important;
+	font-weight: 200 !important;
+}
 
 .modal {
 	height: 100%;
 }
+/* for images */
 .imgGrid {
 	display: block;
 	width: 100%;
 	height: auto;
 }
 
-.imgRaf {
+/* center shelf icons*/
+.imgShelf {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 5px;
+	margin-top: 5%;
 	height: 30px;
 	width: 30px;
 }
-
-.imgCenter {
-	display: block;
-	margin-top: 15%;
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
+/*center popup shelf icons*/
+.imgShelfPopup {
+	margin-top: 0px;
 }
-.fixImage {
+/*center all images*/
+.imgCenter {
+	/*display: block;
+	 margin-top: 20%; */
+}
+/* center fridge image*/
+.centerFridgeImage {
 	bottom: 0px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 15%;
 }
-.fixLogo {
+/*center logo*/
+.centerLogo {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 15%;
 }
-.bar.bar-positive .title, .button {
-	font-family: "ZapfDingbats";
-}
+/*change background color*/
 .background, .background .pane, .background .item, .background .item-complex .item-content {
 	background-color: #14232D;
 }

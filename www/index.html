@@ -5,25 +5,35 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 		<title>Ionic App</title>
+		<!--default css-->
 		<link href="css/ionic.app.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
+		<!--extra css-->
 		<link href="css/myStyle.css" rel="stylesheet">
+		<!--font-->
 		<link rel="stylesheet" href="css/ZapfDingbats.css">
+		<!--default js--->
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="lib/ionic/js/ionic.bundle.js"></script>
 		<script src="js/ng-cordova.js"></script>
 		<script src="cordova.js"></script>
 		<script src="js/app.js"></script>
-		<script type="text/javascript" src="js/json.js"> 	</script>
+
+		<!--request images-->
+		<script type="text/javascript" src="js/json.js"></script>
+		<!--share functions-->
 		<script src="js/share.js"></script>
+		<!--download images and save on phone storage-->
 		<script src="js/fileTransfer.js"></script>
-		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
+
+		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 		<script src="js/jquery.jsonp-2.3.0.min.js "></script -->
-		
+
 	</head>
 
 	<body ng-app="starter"  class="background">
 
+		<!--header bar - back button + title -->
 		<ion-nav-bar class="bar-light">
 
 			<ion-nav-back-button class="button-clear">
@@ -34,59 +44,65 @@
 		<ion-nav-view id="allBody">
 
 		</ion-nav-view>
-
+		<!-- Begin First Page-->
 		<script id="index.html" type="text/ng-template">
-			<ion-view title="" cache-view="false">
+
+			<ion-view class="fonts" title="" cache-view="false">
 
 			<ion-content class="padding">
-
+			<!--logo-->
 			<div>
-			<img class="fixLogo" src="img/grundig-logo.png" width="80%" />
+			<img class="centerLogo" src="img/grundig-logo.png" width="80%" />
 			</div>
-
+			<!--buttons-->
 			<div class="button-bar">
 			<button class="button button-outline button-light icon-left ion-refresh" ng-click="changePage()">REFRESH</button>
 			<!-- <a class="button button-outline button-positive icon-left ion-refresh"  nav-transition="android" href="#/images">REFRESH</a> -->
 			<a class="button button-outline button-light icon-left ion-camera" nav-transition="android" href="#/images">TAKE PICTURE</a>
 			</div>
-
+			<!--fridge image-->
 			<div>
-			<img class="fixImage" src="img/fridge.png" width="100%" />
+			<img class="centerFridgeImage" src="img/fridge.png" width="100%" />
 			</div>
 
 			</ion-content>
 
 			</ion-view>
 		</script>
-
+		<!--End First Page-->
+		<!--Begin Second Page-->
 		<script id="images.html" type="text/ng-template">
+			<!--set device name-->
 			<ion-view title="{{grids[0].title}}" id="imageTitle"  cache-view="false" >
-			<ion-content  class="imgCenter">  <!--class="padding"-->
+			<ion-content>  <!--class="padding"-->
+
+			<!--refresher-->
 			<ion-refresher
 			pulling-text="Pull to refresh..."
-			on-refresh="doRefresh()">
-			</ion-refresher>
-			<div id="allImages">
-			<div  class="row" ng-repeat="grid in grids" ng-if="$index % 2 === 0" ng-controller="ShareController">
+			on-refresh="doRefresh()"></ion-refresher>
+
+			<!--images-->
+			<div  class="row " ng-repeat="grid in grids" ng-if="$index % 2 === 0" ng-controller="ShareController">
 
 			<div class="col col-50" ng-if="$index < grids.length">
-				<img class="imgGrid" ng-click="openModal(grids[$index])" ng-src="{{grids[$index].srcImage}}">
-				<img class="imgRaf" ng-src="{{grids[$index].srcRaf}}">
+			<img class="imgGrid" ng-click="openModal(grids[$index])" ng-src="{{grids[$index].srcImage}}">
+			<img class="imgShelf" ng-src="{{grids[$index].srcShelf}}">
 			</div>
 
 			<div class="col col-50" ng-if="$index + 1 < grids.length">
 			<img class="imgGrid" ng-click="openModal(grids[$index+1])" ng-src="{{grids[$index+1].srcImage}}">
-			<img class="imgRaf" ng-src="{{grids[$index+1].srcRaf}}">
+			<img class="imgShelf" ng-src="{{grids[$index+1].srcShelf}}">
 
 			</div>
 
 			</div>
-			</div>
+
 			</ion-content>
 
 			</ion-view>
 
 		</script>
+		<!--End Second Page-->
 	</body>
 
 </html>

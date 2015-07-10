@@ -18,12 +18,15 @@ $dark:                            #444 !default;
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
+//change ionic theme color
 $positive:                        #14232D !default;
 $light:                           #14232D !default; 
 
+//change button colors
 $button-light-text:               #46B9EB !default;
 $button-light-border:             #46B9EB !default;
 
+//set font
 @font-face {
     font-family: 'ZapfDingbats';
     src: url('../lib/ionic/fonts/ZapfDingbats.eot');
@@ -34,19 +37,10 @@ $button-light-border:             #46B9EB !default;
          url('../lib/ionic/fonts/ZapfDingbats.svg#ZapfDingbats') format('svg');
 }
 
-html, body {
-  font-family: "ZapfDingbats" cursive !important;
-}
 
-.fonts{
-    font-family: 'ZapfDingbats';
-      color:white !important;
-      font-size:30px !important;
-      font-weight:200 !important;
-    }
-    
-//#14232D   lacivert
-//#46B9EB   turkuaz
+//#14232D   dark blue
+//#46B9EB   light blue
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 

@@ -1,5 +1,5 @@
 <ion-modal-view ng-class="hide.bars ? 'content-dark' : 'content-light'">
-
+	<!--header bar-->
 	<ion-header-bar class="bar-light animate" ng-hide="hide.bars">
 		<button class="button button-clear button-primary" ng-click="closeModal()">
 			<span class="icon ion-ios7-close-outline"></span >
@@ -14,26 +14,25 @@
 			ng-class="hide.bars ? 'content-dark full' : 'content-light has-header has-footer'" ">
 
 			<div class="list card background">
-
-			<div class="item item-image imgCenter" >
+			<!--chosen image-->
+			<div class="item item-image" >
 			<img class="modal-img" ng-src="{{grid.srcImage}}"/>
 			</div>
-
-			<!-- <div class="item item-icon-left assertive" href="#">
-
-			</div> -->
+			<!--shelf icon of chosen image-->
+			<div class="item item-icon assertive" href="#">
+			<img class="imgShelf imgShelfPopup" ng-src="{{grid.srcShelf}}"/>
+			</div>
 			</div>
 
 			<br/>
 
 			<!-- < ng-src="{{data.selected.src}}"  > -->
 			</ion-scroll>
-
+			<!--share button-->
 			<ion-footer-bar  class="bar-light animate" ng-hide="hide.bars" >
-			<!-- <img class="imgRaf" ng-src="{{grid.srcRaf}}"/> -->
+
 			<div class="button-bar" ng-controller="ShareController">
-				<a ng-click="shareViaWhatsApp('Demo message',{{grid.id}}, 'http://santoshshinde2012.blogspot.com')" class="button button-outline button-light icon-left ion-android-share" nav-transition="android" href="#images">SHARE</a>
-				<a ng-click="shareAnywhere({{grid.id}})" class="button button-outline button-light icon-left ion-android-share" nav-transition="android" href="#images">SHARE anywhere</a>
+				<a ng-click="shareAnywhere({{grid.id}})" class="button button-outline button-light icon-left ion-android-share" nav-transition="android" href="#images">SHARE</a>
 
 			</div>
 
