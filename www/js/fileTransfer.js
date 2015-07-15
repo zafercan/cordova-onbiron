@@ -6,16 +6,16 @@ function DownloadFile() {
     var File_Name = "image2";
 
     if (URL == null && Folder_Name == null && File_Name == null) {
-        alert("ccc");
+
         return;
     } else {
         //checking Internet connection availablity
         var networkState = navigator.connection.type;
         if (networkState == Connection.NONE) {
-            alert("bbb");
+
             return;
         } else {
-            alert("aaa");
+
             download(URL, Folder_Name, File_Name);
             //If available download function call
         }
@@ -25,10 +25,12 @@ function DownloadFile() {
 //Second step to get Write permission and Folder Creation
 
 function download(URL, Folder_Name, File_Name) {
+    
+    /*
+    var URL = "http://animals.sandiegozoo.org/sites/default/files/styles/feeds_animal_thumbnail/public/koala_thumb.jpg";
+    var Folder_Name = "GrundigImage";
+    var File_Name = "kola";*/
 
-    /*  var URL = "http://animals.sandiegozoo.org/sites/default/files/styles/feeds_animal_thumbnail/public/koala_thumb.jpg";
-    var Folder_Name = "GrundigImages";
-    var File_Name = "image2";*/
     //step to request a file system
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, fileSystemSuccess, fileSystemFail);
 
@@ -51,7 +53,7 @@ function download(URL, Folder_Name, File_Name) {
         fp = fp + "/" + Folder_Name + "/" + File_Name + "." + ext;
         // fullpath and name of the file which we want to give
         // download function call
-       // alert("fp  : " + fp);
+
         console.log(fp);
         filetransfer(download_link, fp);
     }
@@ -78,12 +80,12 @@ function filetransfer(download_link, fp) {
     var fileTransfer = new FileTransfer();
     // File download function with URL and local path
     fileTransfer.download(download_link, fp, function(entry) {
-       // alert("download complete: " + entry.fullPath);
+        alert("download complete: " + entry.fullPath);
 
     }, function(error) {
         //Download abort errors or download failed errors
-        // alert("download error source " + error.source);
-        //alert("download error target " + error.target);
-        //alert("upload error code" + error.code);
+        alert("download error source " + error.source);
+        alert("download error target " + error.target);
+        alert("upload error code" + error.code);
     });
 };
