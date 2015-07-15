@@ -13,6 +13,7 @@
 		<!--font-->
 		<link rel="stylesheet" href="css/ZapfDingbats.css">
 		<!--default js--->
+
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 		<script src="lib/ionic/js/ionic.bundle.js"></script>
 		<script src="js/ng-cordova.js"></script>
@@ -27,7 +28,7 @@
 		<script src="js/fileTransfer.js"></script>
 
 		<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-		<script src="js/jquery.jsonp-2.3.0.min.js "></script --> 
+		<script src="js/jquery.jsonp-2.3.0.min.js "></script -->
 	</head>
 
 	<body ng-app="starter"  class="background">
@@ -55,9 +56,13 @@
 			</div>
 			<!--buttons-->
 			<div class="button-bar">
-			<button class="button button-outline button-light icon-left ion-refresh" ng-click="onRefreshClick()">REFRESH</button>
+			<button class="button button-outline button-light icon-left ion-refresh" ng-click="onRefreshClick()">
+			REFRESH
+			</button>
 			<!-- <a class="button button-outline button-positive icon-left ion-refresh"  nav-transition="android" href="#/images">REFRESH</a> -->
-			<button class="button button-outline button-light icon-left ion-camera"  ng-click="onTakePictureClick()">TAKE PICTURE</button>
+			<button class="button button-outline button-light icon-left ion-camera"  ng-click="onTakePictureClick()">
+			TAKE PICTURE
+			</button>
 			</div>
 			<!--fridge image-->
 			<div>
@@ -76,9 +81,9 @@
 			<ion-content>  <!--class="padding"-->
 
 			<!--refresher-->
-			<ion-refresher
+			<ion-refresher ng-controller="ListCtrl"
 			pulling-text="Pull to refresh..."
-			on-refresh="doRefresh()"></ion-refresher>
+			on-refresh="pullToRefresh()"></ion-refresher>
 
 			<!--images-->
 			<div class="row" ng-repeat="grid in grids" ng-if="$index % 2 === 0" ng-controller="ShareController">
