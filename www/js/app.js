@@ -29,74 +29,49 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
 });
 
 //first page controller
-myApp.controller('ListCtrl', function($scope, $state) {
+myApp.controller('ListCtrl', function($scope, $state, $ionicLoading) {
 
     //$ionicHistory.clearCache().then(function(){ $state.go('view', { imageid : 1 } )});
+    
+    $scope.onRefreshClick = function() {
+        for (var i = 0; i < grids.length; i++) {
+
+            var img = grids[i].srcImage;
+            grids[i].srcImage = '';
+            grids[i].srcImage = grids[i].url + '?timestamp=' + getTimeStamp();
+
+        }
+        $scope.changePage();
+    };
+    $scope.onTakePictureClick = function() {
+
+        $ionicLoading.show({
+             content: 'Loading Data',
+        animation: 'fade-in',
+        showBackdrop: false
+        });
+        $.getJSON(TAKE_PICTURE_URL, function(data) {
+            //console.debug(grids);
+
+            if (data.status == STATUS_OK) {
+                $scope.onRefreshClick();
+                $scope.changePage();
+                $scope.hide();
+            }
+        });
+
+        $scope.hide = function() {
+            $ionicLoading.hide();
+        };
+
+    };
+    
     $scope.changePage = function() {
         $state.go('view', {
             imageid : 1
         }, {
             reload : true
         });
-    };
-
-    $scope.onTakePictureClick = function() {
-        
-         $.getJSON(TAKE_PICTURE_URL, function(data) {
-        //console.debug(grids);
-        alert(data.status);
-         if (data.status == STATUS_OK) {
- 
-        for (var i = 0; i < grids.length; i++) {
-            
-            
-             
-//             
-            // console.log("before : " + grids[i].srcImage);
-            // var index = i;
-            // index = index.toString();
-            // var images = $('#image-' + index).attr('id');
-            // console.debug(images);
-// 
-      
-            var fileName = "image";
-            var index = i.toString();
-            fileName = fileName + index;
-            
-            //console.log("after : " + grids[i].srcImage);
-            var url = grids[i].url;
-         
-            download(url, "GrundigImages", fileName);
-            
-            var img = grids[i].srcImage;
-            grids[i].srcImage = '';
-            //grids[i].srcImage = img;
-            
-            var len = grids.length;
-            var tmp = (i+1)%len;
-            grids[i].srcImage = grids[tmp].srcImage;
-
-
-            //////
-            /*
-            var image = "file:///storage/emulated/0//GrundigImages/image";
-            var rand = Math.round(Math.random() * 3);
-            //alert("rand : "+rand);
-            rand = rand.toString();
-            image += rand;
-            image += ".jpg";
-            grids[i].srcImage = image;
-*/
-            ///////////////
-//download(img, "GrundigImages", fileName);
-        }
-        
-         $scope.changePage();
-        }
-         });
-         
-      
-
     };
 });
 

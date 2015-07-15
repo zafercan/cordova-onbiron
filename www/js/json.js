@@ -54,22 +54,23 @@ function JSONProcess() {
             URLs[3] = "http://www.personal-view.com/talks/uploads/FileUpload/39/5efeafb5213ce3433d0b2fc7fe72cb.jpg";
 */
             //update grids
+            grids[i].srcImage = URLs[i];
             grids[i].url = URLs[i];
             grids[0].title = deviceName;
             //set filename
             var fileName = "image";
             var index = i.toString();
             fileName = fileName + index;
-//alert(URLs[i]);
+ 
             //download  file
-            var tmp = URLs[i];
-            download( URLs[i], "GrundigImages", fileName);
-       
+            
+            //download( URLs[i], "GrundigImages", fileName);
+       /*
              var image = "file:///storage/emulated/0//GrundigImages/image";
              var index = grids[i].id.toString();
              image += index;
              image += ".jpg";
-             grids[i].srcImage = image;
+             grids[i].srcImage = image;*/
         }
 
     });
